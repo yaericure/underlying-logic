@@ -1,4 +1,4 @@
-/* 自動生成:側欄小號編號(redesign-path-sidebar.py) */
+/* 自動生成:側欄小號編號(repair-emoji.py) */
 #starlight__sidebar a[href$="/unit01/"]::before { content: "1. "; }
 #starlight__sidebar a[href$="/unit02/"]::before { content: "2. "; }
 #starlight__sidebar a[href$="/unit03/"]::before { content: "3. "; }
