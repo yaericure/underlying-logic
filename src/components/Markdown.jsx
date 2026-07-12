@@ -32,15 +32,20 @@ const CALLOUTS = {
   },
 };
 
-// 從 blockquote 子節點取出 [!TYPE] 標記
+// 從 blockquote 子節點取出 [!TYPE] 標記;第一行若是短標籤(如「提示」)才當標題,
+// 否則視為內文(有些章節把內容直接接在 [!TYPE] 之後)
 function calloutType(children) {
   const arr = Array.isArray(children) ? children : [children];
   for (const child of arr) {
     const text = child?.props?.children;
     const first = Array.isArray(text) ? text[0] : text;
     if (typeof first === "string") {
-      const m = first.match(/^\[!(TIP|WARNING|ADVANCED|NOTE)\]\s*(.*)/);
-      if (m) return { type: m[1], title: m[2] };
+      const m = first.match(/^\[!(TIP|WARNING|ADVANCED|NOTE)\]\s*([^\n]*)/);
+      if (m) {
+        const rest = m[2].trim();
+        const isLabel = rest.length > 0 && rest.length <= 12 && !/[,。;:!?、]/.test(rest);
+        return { type: m[1], title: isLabel ? rest : "" };
+      }
     }
   }
   return null;
@@ -58,7 +63,11 @@ function Blockquote({ children }) {
     const text = child.props.children;
     const arr = Array.isArray(text) ? text : [text];
     if (typeof arr[0] === "string" && arr[0].match(/^\[!/)) {
-      const rest = [arr[0].replace(/^\[!\w+\]\s*/, ""), ...arr.slice(1)];
+      // 標籤已顯示在標題列→整個第一行剝掉;內容直接接在標記後→只剝 [!TYPE] 標記
+      const stripped = info.title
+        ? arr[0].replace(/^\[!\w+\][^\n]*\n?/, "")
+        : arr[0].replace(/^\[!\w+\]\s*/, "");
+      const rest = [stripped, ...arr.slice(1)];
       return <p key={i}>{rest}</p>;
     }
     return child;
