@@ -51,6 +51,13 @@
   background: var(--gst-accent);
 }
 
+/* 「進階」callout 改用綠色(其他 tip 維持 Starlight 預設紫色) */
+.starlight-aside--tip[aria-label="進階"] {
+  --sl-color-asides-text-accent: var(--sl-color-green-high);
+  --sl-color-asides-border: var(--sl-color-green);
+  background-color: var(--sl-color-green-low);
+}
+
 /* 金句 blockquote */
 .sl-markdown-content blockquote {
   border-inline-start-color: var(--gst-accent);
