@@ -58,6 +58,25 @@
   background-color: var(--sl-color-green-low);
 }
 
+/* 「警告」callout 改用紅色 */
+.starlight-aside[aria-label="警告"] {
+  --sl-color-asides-text-accent: var(--sl-color-red-high);
+  --sl-color-asides-border: var(--sl-color-red);
+  background-color: var(--sl-color-red-low);
+}
+
+/* 「注意」callout 改用黃色(深淺色各自定義,Starlight 無內建黃) */
+.starlight-aside[aria-label="注意"] {
+  --sl-color-asides-text-accent: #fde047;
+  --sl-color-asides-border: #eab308;
+  background-color: #3a3110;
+}
+:root[data-theme="light"] .starlight-aside[aria-label="注意"] {
+  --sl-color-asides-text-accent: #854d0e;
+  --sl-color-asides-border: #ca8a04;
+  background-color: #fef9c3;
+}
+
 /* 金句 blockquote */
 .sl-markdown-content blockquote {
   border-inline-start-color: var(--gst-accent);
