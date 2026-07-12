@@ -8,7 +8,9 @@ function parseFrontmatter(text) {
   for (const line of m[1].split("\n")) {
     const idx = line.indexOf(":");
     if (idx === -1) continue;
-    data[line.slice(0, idx).trim()] = line.slice(idx + 1).trim();
+    const key = line.slice(0, idx).trim();
+    const value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+    data[key] = value;
   }
   return { data, body: text.slice(m[0].length) };
 }
