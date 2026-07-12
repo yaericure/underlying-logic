@@ -95,11 +95,36 @@
   color: var(--sl-color-white);
   margin: 0.25rem 0 0.75rem !important;
 }
+/* 圖示彩色圓角方框:移植 Starlight Card 元件的原生樣式(含 nth-child 輪替色) */
+.path-card {
+  --path-icon-border: var(--sl-color-purple);
+  --path-icon-bg: var(--sl-color-purple-low);
+}
+.path-card:nth-child(4n + 1) {
+  --path-icon-border: var(--sl-color-orange);
+  --path-icon-bg: var(--sl-color-orange-low);
+}
+.path-card:nth-child(4n + 3) {
+  --path-icon-border: var(--sl-color-green);
+  --path-icon-bg: var(--sl-color-green-low);
+}
+.path-card:nth-child(4n + 4) {
+  --path-icon-border: var(--sl-color-red);
+  --path-icon-bg: var(--sl-color-red-low);
+}
+.path-card:nth-child(4n + 5) {
+  --path-icon-border: var(--sl-color-blue);
+  --path-icon-bg: var(--sl-color-blue-low);
+}
 .path-title .path-icon {
   display: inline-block;
-  vertical-align: -0.18em;
-  margin-inline-end: 0.45em;
-  color: var(--gst-accent);
+  vertical-align: -0.35em;
+  margin-inline-end: 0.55em;
+  padding: 0.2em;
+  border: 1px solid var(--path-icon-border);
+  background-color: var(--path-icon-bg);
+  border-radius: 0.25rem;
+  color: var(--sl-color-white);
 }
 .path-links {
   list-style: none !important;
