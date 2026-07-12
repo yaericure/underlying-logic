@@ -95,6 +95,12 @@
   color: var(--sl-color-white);
   margin: 0.25rem 0 0.75rem !important;
 }
+.path-title .path-icon {
+  display: inline-block;
+  vertical-align: -0.18em;
+  margin-inline-end: 0.45em;
+  color: var(--gst-accent);
+}
 .path-links {
   list-style: none !important;
   padding: 0 !important;
