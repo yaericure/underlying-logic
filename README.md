@@ -1,30 +1,23 @@
 # 底層邏輯・教學導讀網站
 
-《底層邏輯:看清這個世界的底牌》(劉潤 著,時報出版) 的教學導讀網站。內容為各章重點整理、白話解說與思考題,**並非原書全文或翻譯**;
-原文引用僅限每章至多兩句短金句。
-
-## 技術棧
-
-- Vite 7 + React 19(HashRouter,可靜態部署)
-- Tailwind CSS v4(class 策略深色模式)+ Lucide React
-- react-markdown + remark-gfm + rehype-highlight
+《底層邏輯:看清這個世界的底牌》(劉潤著,時報出版)的教學導讀網站,以 Astro + Starlight 建置。
+內容為重點整理、白話解說與思考題,**並非原書全文**;原文引用僅限每課至多兩句短金句。
 
 ## 開發
 
 ```bash
-npm install
-npm run dev      # 開發伺服器
+npm ci
+npm run dev      # http://localhost:4321/underlying-logic/
 npm run build    # 產出 dist/
+npm run preview
 ```
 
-## 內容編輯
+## 結構
 
-章節內容在 `src/content/NN.md`(00 起連續編號),frontmatter 需含
-`title / label / part / order` 四欄(part 為「前言」「結語」時側欄平鋪)。
-支援 callout:`> [!TIP]`、`> [!WARNING]`、`> [!NOTE]`、`> [!ADVANCED]`。
-新增章節只要加 md 檔,側欄、路由、上下章導覽自動生成。
+- 內容:`src/content/docs/unit*.md`(共 21 篇)+ `index.mdx`(首頁)
+- 側欄:`astro.config.mjs` 的 `sidebar`(新增章節要同步)
+- 主題:fuchsia,樣式在 `src/styles/theme.css`
+- Callout:`:::tip[標題]`、`:::note[標題]`、`:::caution[標題]`
+- 排版慣例:中文與英數之間加半形空格
 
-## 佈局與主題
-
-三欄 docs 佈局(頂欄搜尋/側欄分組/右側 TOC scrollspy);主題色 fuchsia。
-GitHub 連結在 `src/components/Navbar.jsx` 的 `GITHUB_URL`。
+線上網址:https://yaericure.github.io/underlying-logic/(push main 自動部署)

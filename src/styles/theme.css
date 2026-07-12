@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@import "@astrojs/starlight-tailwind";
+
+/* ===== 主題色:lime(萊姆綠) ===== */
+:root {
+  --sl-color-accent-low: #4a044e;
+  --sl-color-accent: #d946ef;
+  --sl-color-accent-high: #f5d0fe;
+  --gst-accent: #d946ef;
+  --gst-accent-soft: #d946ef33;
+}
+:root[data-theme="light"] {
+  --sl-color-accent-low: #fae8ff;
+  --sl-color-accent: #a21caf;
+  --sl-color-accent-high: #701a75;
+  --gst-accent: #a21caf;
+  --gst-accent-soft: #a21caf26;
+}
+
+/* ===== 內文排版:章節格線 ===== */
+/* H1 標題下的漸層條 */
+.sl-markdown-content h1::after,
+.content-panel h1::after {
+  content: "";
+  display: block;
+  width: 9rem;
+  height: 6px;
+  margin-top: 0.9rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--gst-accent), var(--gst-accent-soft), transparent);
+}
+
+/* H2 下的淡分隔線 */
+.sl-markdown-content h2 {
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--gst-accent-soft);
+}
+
+/* H3 左側色條 */
+.sl-markdown-content h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.sl-markdown-content h3::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  border-radius: 2px;
+  background: var(--gst-accent);
+}
+
+/* 金句 blockquote */
+.sl-markdown-content blockquote {
+  border-inline-start-color: var(--gst-accent);
+  background: var(--gst-accent-soft);
+  border-radius: 0 0.6rem 0.6rem 0;
+  padding: 0.6rem 1rem;
+}
+
+/* 內文行距與寬度微調 */
+.sl-markdown-content {
+  line-height: 1.9;
+}
+
+/* ===== 首頁「你會學到什麼」卡片區 ===== */
+.learn-title {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-top: 3rem;
+}
+.learn-sub {
+  text-align: center;
+  color: #a1a1aa;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+  margin: 0.6rem auto 2rem;
+  max-width: 38em;
+}
+.learn-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+@media (min-width: 640px) {
+  .learn-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .learn-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.learn-card {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.learn-card:hover {
+  border-color: var(--gst-accent);
+  background: #1c1c20;
+}
+.learn-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+.learn-card-title {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+.learn-desc {
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Tailwind preflight 會清掉列點,這裡補回 */
+.sl-markdown-content ul {
+  list-style: disc;
+  padding-inline-start: 1.4em;
+}
+.sl-markdown-content ol {
+  list-style: decimal;
+  padding-inline-start: 1.4em;
+}
+.sl-markdown-content li {
+  margin-block: 0.35em;
+}
+.sl-markdown-content li::marker {
+  color: var(--gst-accent);
+}
