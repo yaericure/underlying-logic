@@ -64,6 +64,71 @@
   line-height: 1.9;
 }
 
+/* ===== 首頁「學習路徑」卡片區 ===== */
+.path-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  align-items: stretch;
+}
+@media (min-width: 720px) {
+  .path-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.path-grid > .path-card { margin-top: 0 !important; }
+.path-card {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 1rem;
+  padding: 1.4rem 1.5rem;
+  background: var(--sl-color-bg-nav);
+}
+.path-card > * { margin-top: 0 !important; }
+.path-num {
+  color: var(--gst-accent);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+.path-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--sl-color-white);
+  margin: 0.25rem 0 0.75rem !important;
+}
+.path-links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.path-links li {
+  margin: 0.3rem 0 !important;
+  padding: 0;
+}
+.path-links a {
+  font-size: 0.95rem;
+  color: var(--sl-color-gray-2);
+  text-decoration: none;
+}
+.path-links a:hover {
+  color: var(--gst-accent);
+  text-decoration: underline;
+}
+
+/* ===== 側欄編號(小號阿拉伯數字,內容由 sidebar-num.css 逐站生成)===== */
+#starlight__sidebar a[href]::before {
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--sl-color-gray-3);
+  margin-inline-end: 0.35em;
+  font-variant-numeric: tabular-nums;
+}
+#starlight__sidebar summary .group-label span::before {
+  font-size: 0.72em;
+  font-weight: 700;
+  color: var(--gst-accent);
+  margin-inline-end: 0.35em;
+}
+
 /* ===== 首頁「你會學到什麼」卡片區 ===== */
 .learn-title {
   text-align: center;
