@@ -83,6 +83,11 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.1rem;
+  align-items: stretch;
+}
+/* Starlight 會給非首子元素加 margin-top,會讓卡片高度不齊,這裡歸零 */
+.learn-grid > .learn-card {
+  margin-top: 0 !important;
 }
 @media (min-width: 640px) {
   .learn-grid { grid-template-columns: repeat(2, 1fr); }
